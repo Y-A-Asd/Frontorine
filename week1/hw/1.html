@@ -1,0 +1,31 @@
+<!-- Q1
+a = number 
+b = string  
+c = string 
+d = string
+e = undifined
+f = boolean
+g = object
+h = object  (not using "=" instead ":") 
+-->
+
+<!-- Q2 -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            let input = prompt("put somethig here: ")
+            // for finding number we can use regex but we dont know it yet :-|
+            alert((!isNaN(input) && "Number") 
+        || (input.toLowerCase()==="true" && "Boolean")
+        || (input.toLowerCase()==="false" && "Boolean")
+        || "String"
+        )
+        </script>
+</body>
+</html>
