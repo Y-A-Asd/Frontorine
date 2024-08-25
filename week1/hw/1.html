@@ -18,7 +18,8 @@ h = object  (not using "=" instead ":")
     <title>Document</title>
 </head>
 <body>
-        <script>
+        <!-- Q2 -->
+        <!-- <script>
             let input = prompt("put somethig here: ")
             // for finding number we can use regex but we dont know it yet :-|
             alert((!isNaN(input) && "Number") 
@@ -26,6 +27,49 @@ h = object  (not using "=" instead ":")
         || (input.toLowerCase()==="false" && "Boolean")
         || "String"
         )
+        </script> -->
+
+        <!-- Q3 -->
+        <!-- <script>
+            let number1 = prompt("put first number: ")
+            let number2 = prompt("put second number: ")
+            const operations = ["+", "-", "*", "/", "%"]
+            let operation = + prompt(`choice operation between 1 to 5   ${operations} `)
+            let answer =eval(`Number(${number1})+operations[operation - 1]+Number(${number2})`) 
+            alert(`answer is : ${eval(answer)}`)
+
+        </script> -->
+
+        <!-- Q4 -->
+        <!-- shebahat => jofteshon false medan 
+        tafavot => null yani khali vali undifined means value not been difined :-) -->
+
+        <!-- Q5 -->
+         <script>
+            // this is so much pain with out if and sort statements >( - )<
+            let student1 = prompt("Put first name: ");
+            let point1 = +prompt("Put first number: ");
+
+            let student2 = prompt("Put second name: ");
+            let point2 = +prompt("Put second number: ");
+
+            let student3 = prompt("Put third name: ");
+            let point3 = +prompt("Put third number: ");
+
+            let students = [
+                [student1, point1],
+                [student2, point2],
+                [student3, point3]
+            ];
+
+            let [firstbig, firstsmall] = (students[0][1] >= students[1][1] && [students[0], students[1]]) || [students[1], students[0]];
+
+            let [thefirst, secondsmall] = (firstbig[1] >= students[2][1] && [firstbig, students[2]]) || [students[2], firstbig];
+
+            let [thesecond, thethird] = (firstsmall[1] >= secondsmall[1] && [firstsmall, secondsmall]) || [secondsmall, firstsmall];
+
+            alert(`1. ${thefirst[0]}, 2. ${thesecond[0]}, 3. ${thethird[0]}`);
         </script>
+
 </body>
 </html>
