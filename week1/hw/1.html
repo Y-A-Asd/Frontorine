@@ -16,18 +16,18 @@ h = object  (not using "=" instead ":")
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Flatlife</title>
 </head>
 <body>
         <!-- Q2 --> 
         <script>
-            let input = prompt("put somethig here: ")
-            // for finding number we can use regex but we dont know it yet :-|
-            alert((!isNaN(input) && "Number") 
-        || (input.toLowerCase()==="true" && "Boolean")
-        || (input.toLowerCase()==="false" && "Boolean")
-        || "String"
-        )
+        //     let input = prompt("put somethig here: ")
+        //     // for finding number we can use regex but we dont know it yet :-|
+        //     alert((!isNaN(input) && "Number") 
+        // || (input.toLowerCase()==="true" && "Boolean")
+        // || (input.toLowerCase()==="false" && "Boolean")
+        // || "String"
+        // )
         </script>
 
         <!-- Q3 -->
@@ -58,20 +58,31 @@ h = object  (not using "=" instead ":")
             let student3 = prompt("Put third name: ");
             let point3 = +prompt("Put third number: ");
 
-            let students = [
-                [student1, point1],
-                [student2, point2],
-                [student3, point3]
-            ];
+            // let students = [
+            //     [student1, point1],
+            //     [student2, point2],
+            //     [student3, point3]
+            // ];
 
-            let [firstbig, firstsmall] = (students[0][1] >= students[1][1] && [students[0], students[1]]) || [students[1], students[0]];
+            // let [firstbig, firstsmall] = (students[0][1] >= students[1][1] && [students[0], students[1]]) || [students[1], students[0]];
 
-            let [thefirst, secondsmall] = (firstbig[1] >= students[2][1] && [firstbig, students[2]]) || [students[2], firstbig];
+            // let [thefirst, secondsmall] = (firstbig[1] >= students[2][1] && [firstbig, students[2]]) || [students[2], firstbig];
 
-            let [thesecond, thethird] = (firstsmall[1] >= secondsmall[1] && [firstsmall, secondsmall]) || [secondsmall, firstsmall];
+            // let [thesecond, thethird] = (firstsmall[1] >= secondsmall[1] && [firstsmall, secondsmall]) || [secondsmall, firstsmall];
 
-            alert(`1. ${thefirst[0]}, 2. ${thesecond[0]}, 3. ${thethird[0]}`);
-        </script>
+            // alert(`1. ${thefirst[0]}, 2. ${thesecond[0]}, 3. ${thethird[0]}`);
+
+            let [bigger_point, bigger_name, lower_point, lower_name] = (point1 >= point2 
+            && [point1,student1,point2, student2]) || [point2,student2,point1, student1]; 
+
+            let [first_name,lower_point2, lower_name2] = (bigger_point >= point3 
+            && [bigger_name,point3, student3]) || [student3,bigger_point,bigger_name]; 
+
+            let [second_name, third_name] = (lower_point >= lower_point2 
+            && [lower_name, lower_name2]) || [lower_name2, lower_name]
+
+            alert(`1. ${first_name}, 2. ${second_name}, 3. ${third_name}`);
+        // </script>
 
 </body>
 </html>
