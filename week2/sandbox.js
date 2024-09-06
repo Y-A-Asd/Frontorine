@@ -9,11 +9,10 @@
 //     if(b === 0){
 //     return a;
 //   }
-//
 //   return gcd(b, a % b);
 // }
-// let lcm = Function('a','b',' return a * b/ gcd (a,b)')
-
+// let lcm = Function('a','b','return a * b/ gcd (a,b)')
+//
 // let a = + prompt('a:')
 // let b = + prompt('b:')
 //
@@ -33,7 +32,7 @@
 //         'M': '*',
 //         'D': '@'
 //     };
-//     return str.split('').map(char => replaceMap[char] || char).join('');
+//     return str.split('').map(char => replaceMap[char] || char).join(''); // ?? mishod
 // }
 //
 // let str = prompt("put some thing here:")
@@ -55,7 +54,7 @@
 // Q5
 // Resources
 // https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
-
+//
 // let rand = Math.floor(Math.random() * 100 )+ 1;
 // console.log(rand)
 // for (let i = 0; i < 8; i++){
@@ -82,7 +81,7 @@
 //     }
 //     console.log(sum)
 //     if(String(sum).length > 1){
-//         calc(String(sum))
+//         return calc(String(sum))
 //     }
 //     else{
 //         return sum
@@ -105,3 +104,20 @@
 // let input = + prompt('put some number')
 // fact(input)
 
+// Q8
+
+function fibb(numb){
+    let f1 = 0
+    let f2 = 1
+    let f3 = 0
+    numb >= 1 ? console.log(f2) : null;
+    while(numb > 1){
+        f3 = f1 + f2
+        console.log(f3)
+        f1 = f2
+        f2 = f3
+        numb--
+    }
+}
+let input =  + prompt('put some number')
+fibb(input)

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ideas</title>
+
+    <script>
+        function openDialog() {
+            document.getElementById("modal").style.display = "block";
+        }
+
+        function closeDialog() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        function donate() {
+            const amount = document.getElementById("donationAmount").value;
+            if (amount) {
+                alert(amount + " donated tnx");
+                closeDialog();
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <h1>ideas</h1>
+
+    <details>
+        <summary>idea 1 </summary>
+        <p>:)</p>
+    </details>
+
+    <details>
+        <summary>idea 2</summary>
+        <p>.........</p>
+    </details>
+
+    <details>
+        <summary>idea 3</summary>
+        <p>we should commit genocide :-?</p>
+    </details>
+
+    <button onclick="openDialog()">donate</button>
+
+
+    <div id="modal" style="display: none">
+        <h2>donate </h2>
+        <label for="donationAmount">put money</label>
+        <input type="number" id="donationAmount" min="0" placeholder="$$$">
+        <br><br>
+        <button onclick="donate()">donate</button>
+        <button onclick="closeDialog()">cancel</button>
+    </div>
+
+    <br><br>
+    <a href="bio.html">bio</a> | <a href="contact.html">contact</a>
+</body>
+</html>
