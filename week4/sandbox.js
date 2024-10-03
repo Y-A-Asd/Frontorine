@@ -3,10 +3,10 @@ let student_template = {
     'lastname': "",
     'fathersname': "",
     'id': 0,
-    'age': 0,
-    'city': '',
-    'phone_number': '',
-    'address': ''
+    // 'age': 0,
+    // 'city': '',
+    // 'phone_number': '',
+    // 'address': ''
 }
 
 let lessons_template = {
@@ -56,21 +56,28 @@ function new_user(student_template) {
 
 function edit_user(id) {
     let key = prompt('enter the field you want to edit: ')
-    let value = prompt('enter the new value: ')
+
     let user_data = student_data[id]
-    try {
-        user_data[key] = value
-    } catch (err) {
-        alert(err.message)
-        return null
+    // try {
+    //     user_data[key] = value
+    // } catch (err) {
+    //     alert(err.message)
+    //     return null
+    // }
+    // alert('STUDENT UPDATED!')
+
+    // !!user_data[key] ? user_data[key] = value & alert('STUDENT UPDATED!') : null
+    if (!!user_data[key]) {
+        user_data[key] = prompt('enter the new value: ')
+        alert('STUDENT UPDATED!')
+    } else {
+        alert('FIELD NOT FOUND!')
     }
-    alert('STUDENT UPDATED!')
 }
 
 function delete_user(id) {
-    let user_data = student_data[id]
     try {
-        delete user_data[id]
+        delete student_data[id]
     } catch (err) {
         alert(err.message)
         return null
@@ -89,14 +96,15 @@ function add_lesson(lessons_template, id) {
 
 function edit_lesson(id) {
     let lessons = lessons_data[id]
+    // console.log(lessons)
     let out_lessons = []
     // for (let index in lessons){
     //     out_lessons.push(`${index}- ${lessons[index]} \n`)
     // }
-    out_lessons = lessons.map((lesson, index) => `${index} - ${lesson} \n`);
+    out_lessons = lessons.map((lesson, index) => `${index} - ${lesson.name} \n`);
 
-    let user_index = prompt('\n'.join(out_lessons))
-    lessons.id[user_index].point = prompt('new value of point: ')
+    let user_index = +prompt(out_lessons.join('\n'))
+    lessons[user_index].point = prompt('new value of point: ')
     alert('STUDENT POINT UPDATED!')
 }
 
@@ -106,21 +114,19 @@ function delete_lesson(id) {
     // for (let index in lessons){
     //     out_lessons.push(`${index}- ${lessons[index]} \n`)
     // }
-    out_lessons = lessons.map((lesson, index) => `${index} - ${lesson} \n`);
+    out_lessons = lessons.map((lesson, index) => `${index} - ${lesson.name} \n`);
 
-    let user_index = prompt('\n'.join(out_lessons))
-    lessons_data.id.splice(user_index, 1)
+    let user_index = prompt(out_lessons.join('\n'))
+    lessons_data[id].splice(user_index, 1)
     alert('STUDENT POINT DELETED!')
-}
-
-function make_average(id) {
-
 }
 
 function average(id) {
     let sum = lessons_data[id].reduce((sum, c) => sum + (c.point * c.factor), 0) //I do it with one reduce later
-    let len = lessons_data[id].reduce((factors, c) => factors + c.factor, 0)     //I do it with one reduce later
-    alert(`Average is : ${sum / len}`)                                          // :-)
+    console.log(sum)
+    let len = lessons_data[id].reduce((factors, c) => factors + Number(c.factor), 0)     //I do it with one reduce later
+    console.log(len)
+    alert(`Average is : ${sum / len}`)        // :-)
 }
 
 function list_of_students() {
@@ -134,32 +140,65 @@ function list_of_students() {
     //     student_points.student_id = sum / len
     // }
 
-    student_data.map((student_id) => {
+    Object.keys(student_data).map((student_id) => {
         let {sum, len} = lessons_data[student_id].reduce((acc, c) => {
             acc.sum += c.point * c.factor;
-            acc.len += c.factor;
+            acc.len += Number(c.factor);
             return acc;
         }, {sum: 0, len: 0});
         student_points[student_id] = sum / len
     })
     const sortable = Object.entries(student_points).sort(([, a], [, b]) => b - a);
-    let final_sort = sortable.map((element) => `${element[0]['name']}: ${element[1]}`)
-    alert('\n'.join(final_sort))
+    let final_sort = sortable.map(([id, avg]) => `${student_data[id]['name']}: ${avg}`)
+    alert(final_sort.join("\n"))
 }
 
 function find_fail(min_point) {
-    let student_points = {}
-
-    student_data.filter((student_id) => {
+    let failed = Object.keys(student_data).filter((student_id) => {
         let {sum, len} = lessons_data[student_id].reduce((acc, c) => {
             acc.sum += c.point * c.factor;
-            acc.len += c.factor;
+            acc.len += Number(c.factor);
             return acc;
         }, {sum: 0, len: 0});
         let average = sum / len
-        if (average < min_point) {
-            student_points[student_id] = average
-        }
-    })
+        return average < min_point
+    }).map(student_id => student_data[student_id].name);
+
+    // let failed_students = []
+    // failed.forEach((id) => {
+    //     failed_students.push(student_data[id].name)
+    // })
+    // alert(failed_students)
+
+     alert(failed)
 }
 
+function menu() {
+    let options = [
+        'new_user(student_template)',
+        'edit_user(+prompt("id: "))',
+        'delete_user(+prompt("id: "))',
+        'add_lesson(lessons_template,+prompt("id: "))',
+        'edit_lesson(+prompt("id: "))',
+        'delete_lesson(+prompt("id: "))',
+        'average(+prompt("id: "))',
+        'list_of_students()',
+        'find_fail(+prompt("put min point: "))',
+    ]
+    while (true) {
+        let menu_list = ('1. CREATE USER\n2. EDIT USER\n3. DELETE USER\n' +
+            '4. ADD LESSON\n5. EDIT LESSON\n6. DELETE LESSON\n' +
+            '7. GET AVERAGE\n8. LIST OF STUDENT\n9. FIND FAILED STUDENT\n')
+        let user_option = +prompt(menu_list)
+        if (isNaN(user_option) || user_option > 9 || user_option < 1) {
+            alert('WRONG INPUT')
+            alert('FLATLIFE :-)')
+            return
+        }
+        let callback = options[user_option - 1]
+        // alert(callback)
+        eval(callback)
+    }
+}
+
+menu()
