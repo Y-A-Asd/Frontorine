@@ -14,10 +14,10 @@ body {
 
 .calculator {
     background-color: #222831; /* Dark background */
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 280px;
+    max-width: 380px;
 }
 
 .show {
@@ -35,7 +35,7 @@ body {
 }
 
 .user {
-    border-radius: 1rem;
+    border-radius: 0.425rem;
     padding:10px;
     background-color: #1f1f1f;
     font-size: 1.2rem;
@@ -43,7 +43,7 @@ body {
 }
 
 .current {
-    border-radius: 1rem;
+    border-radius: 0.425rem;
     padding:10px;
     background-color: #1f1f1f;
     font-size: 2.5rem;
@@ -53,18 +53,20 @@ body {
 .buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px 10px;
     align-items: center;
     justify-content: space-between;
+
 }
 
 button {
+    box-shadow: #1b1b1b 3px 4px 8px;
     font-size: 1.5rem;
     background-color: #393E46;
     color: #f2f2f2;
     border: none;
     border-radius: 5px;
-    padding: 20px;
+    padding: 32px;
     cursor: pointer;
     transition: background-color 0.3s;
 
@@ -73,6 +75,8 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+        font-weight: lighter;
+    font-size: large;
 }
 
 button:hover {
@@ -86,7 +90,7 @@ button:active {
 .equal {
     flex-grow: 2;
     background-color: #cd6c3a;
-    color: white;
+    color: #393E46;
 }
 
 .equal:hover {
@@ -95,7 +99,6 @@ button:active {
 .ac {
 
     color: #cd6c3a;
-    font-weight: lighter;
-    font-size: large;
+
 }
 
