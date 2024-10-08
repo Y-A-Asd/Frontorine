@@ -17,48 +17,62 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 300px;
+    max-width: 280px;
 }
 
-.display {
-    background-color: #1f1f1f; /* Slightly lighter black for display */
+.show {
+
     color: #f2f2f2; /* Light text */
     font-size: 2rem;
     text-align: right;
-    padding: 20px;
+
     border-radius: 5px;
     margin-bottom: 10px;
     display: flex;
+    gap: 10px;
     flex-direction: column;
     justify-content: center;
-    height: 100px;
 }
 
-.previous-operand {
+.user {
+    border-radius: 1rem;
+    padding:10px;
+    background-color: #1f1f1f;
     font-size: 1.2rem;
     color: #888;
 }
 
-.current-operand {
+.current {
+    border-radius: 1rem;
+    padding:10px;
+    background-color: #1f1f1f;
     font-size: 2.5rem;
     font-weight: bold;
 }
 
 .buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 button {
     font-size: 1.5rem;
-    background-color: #393E46; /* Dark grey for buttons */
+    background-color: #393E46;
     color: #f2f2f2;
     border: none;
     border-radius: 5px;
     padding: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
+
+    width: 50px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 button:hover {
@@ -69,15 +83,19 @@ button:active {
     background-color: #666;
 }
 
-.span-2 {
-    grid-column: span 2;
-}
-
-button:nth-child(17) {
-    background-color: #00ADB5; /* Orange-like color for = */
+.equal {
+    flex-grow: 2;
+    background-color: #cd6c3a;
     color: white;
 }
 
-button:nth-child(17):hover {
-    background-color: #00BFC2;
+.equal:hover {
+    background-color: #c26e00;
 }
+.ac {
+
+    color: #cd6c3a;
+    font-weight: lighter;
+    font-size: large;
+}
+
