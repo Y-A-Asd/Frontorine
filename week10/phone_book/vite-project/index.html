@@ -8,8 +8,20 @@
 </head>
 <body class="">
     <div>
-        <button id="newContact">New Contact</button>
+        <p id="">New Contact</button>
+        <form class="flex-row g-3 mt-2 mb-5 border" id="newContact">
+            <input id="newname" type="text" placeholder="name">
+            <input id="newphone_number" type="text" placeholder="phone_number">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary mb-0">submit</button>
+            </div>
+        </form>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div id="contacts">
         <ul id="contact-list"></ul>
     </div>
@@ -25,7 +37,7 @@
                      cancel
                 </button>
             </div>
-            <button type="button" onclick="deletecontact()" class="btn btn-primary mb-0">Delete</button>
+            <button type="button" id="deletecontact" class="btn btn-primary mb-0">Delete</button>
         </form>
     </div>
     <script src="sandbox.js"></script>

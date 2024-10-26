@@ -26,10 +26,9 @@ function request(url, method, context=null){
 }
 
 function init(){
-fetch(endpoint)
-.then(response => response.json())
-.then(data => render(data))
+    request(endpoint,"GET").then(data => render(data))
 }
+
 function render(contacts) {
     const contactList = document.getElementById('contact-list')
     contactList.innerHTML = ''
@@ -71,9 +70,13 @@ function canceledit() {
     }
 }
 
-function deletecontact() {
-    
-}
+document.getElementById('deletecontact').addEventListener('click', function (event) {
+    const id = event.currentTarget.parentElement.querySelector('#contact_id')
+    request(`${endpoint}/${id.value}`, "DELETE").then(code=>{
+        init()
+        console.log(code)
+    })
+})
 
 
 document.getElementById('dynamic-contact-form').addEventListener('submit', function (event) {
@@ -83,33 +86,28 @@ document.getElementById('dynamic-contact-form').addEventListener('submit', funct
     let name = document.getElementById('name')
     let id = document.getElementById('contact_id')
     console.log(phone_number.value,name.value, id.value)
-    const headers = {
-        'Content-Type': 'application/json',
-    };
 
-    const context = {
+    request(`${endpoint}/${id.value}`, "PUT",{
         'phone_number': phone_number.value,
         'name': name.value,
-    }
+    }).then(code=>{
+        init()
+        console.log(code)
+    })
+})
 
-    const options = {
-        method: 'PUT',
-        headers: headers,
-        body: context ? JSON.stringify(context) : null,
-    };
 
-    fetch(`${endpoint}/${id.value}`,options)
-    .then(response => {
-        if (response.ok) {
-            return response.json()
-    }
-    else{
-        console.log(response)
-        return response.status
-    }
+document.getElementById('newContact').addEventListener('submit', function (event) {
+    event.preventDefault();
 
-}
-    ).then(code=>{
+    let phone_number = document.getElementById('newphone_number')
+    let name = document.getElementById('newname')
+    console.log(phone_number.value,name.value)
+
+    request(`${endpoint}`, "Post",{
+        'phone_number': phone_number.value,
+        'name': name.value,
+    }).then(code=>{
         init()
         console.log(code)
     })
