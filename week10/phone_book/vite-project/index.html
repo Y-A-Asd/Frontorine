@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flatlife</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="">
+    <div>
+        <button id="newContact">New Contact</button>
+    </div>
+    <div id="contacts">
+        <ul id="contact-list"></ul>
+    </div>
+
+    <div id="contact-form-template" class="hidden">
+        <form class="flex-row g-3 mt-2 mb-5 border" id="dynamic-contact-form">
+            <input id="name" type="text" placeholder="name">
+            <input id="phone_number" type="text" placeholder="phone_number">
+            <input id="contact_id" type="hidden">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary mb-0">submit</button>
+                <button type="button" class="btn btn-secondary mb-0" onclick="canceledit()">
+                     cancel
+                </button>
+            </div>
+            <button type="button" onclick="deletecontact()" class="btn btn-primary mb-0">Delete</button>
+        </form>
+    </div>
+    <script src="sandbox.js"></script>
+</body>
+</html>
